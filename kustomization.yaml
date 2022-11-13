@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: traefik-system
+
+secretGenerator:
+- name: traefik-auth
+  files:
+  - users
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+resources:
+- dashboard-certificate.yaml
+- redirect-to-https-by-default.yaml
+- dashboard-ingress.yaml
+- service-metrics.yaml

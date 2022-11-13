@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik.your=company.com
+  namespace: traefik-system
+spec:
+  dnsNames:
+    - traefik.internal.kugelbit.com
+  secretName: traefik.your-company.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

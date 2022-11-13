@@ -1,0 +1,18 @@
+---
+deployment:
+  kind: Deployment
+  replicas: 2
+service:
+  enabled: true
+  type: LoadBalancer
+  # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
+  annotations:
+    oci.oraclecloud.com/load-balancer-type: "nlb"
+
+ingressRoute:
+  dashboard:
+    enabled: false # We will use a custom inrgessRoute with basic auth instead of the default one
+providers:
+  kubernetesCRD:
+    enabled: true
+    allowCrossNamespace: true
